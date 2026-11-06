@@ -6,5 +6,6 @@
     "name": "Future Practice Studio"
   },
   "repository": "https://github.com/dbalakris/future-practice-tools",
-  "keywords": ["prospecting", "sales", "lead-generation"]
+  "keywords": ["prospecting", "sales", "lead-generation"],
+  "license": "MIT"
 }
