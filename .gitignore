@@ -1,0 +1,3 @@
+# Private data never belongs in a tool. Project folders made by a setup skill keep theirs here.
+**/private/
+.DS_Store

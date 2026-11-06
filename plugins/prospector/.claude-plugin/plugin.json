@@ -1,0 +1,10 @@
+{
+  "name": "prospector",
+  "version": "0.0.1",
+  "description": "Finds companies whose recent events make them live prospects, from your own ideal-customer triggers, and routes results to the surface you name. Placeholder release: the setup and collection skills land in 1.0.0.",
+  "author": {
+    "name": "Future Practice Studio"
+  },
+  "repository": "https://github.com/dbalakris/future-practice-tools",
+  "keywords": ["prospecting", "sales", "lead-generation"]
+}
