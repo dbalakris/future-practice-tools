@@ -1,0 +1,23 @@
+{
+  "_about": "Generic starting values. Copy this file into your project as edition-cover.json (or docs/povs/edition-cover.json) and change it there; the plugin never holds your settings.",
+  "series": "Your Newsletter",
+  "number_format": "No. {n}",
+  "title_bold": false,
+  "mark": null,
+  "colors": {
+    "ground": "#2f3a45",
+    "sheet": "#fbfaf6",
+    "sheet_edge": "#e4e1d8",
+    "rule": "#dcdee2",
+    "series": "#8a4b2e",
+    "number": "#6a7078",
+    "title": "#1c1f24",
+    "subtitle": "#6a7078"
+  },
+  "fonts": {
+    "title": { "family": "Outfit", "weight": 500, "bold_weight": 700 },
+    "subtitle": { "family": "Literata", "weight": 400 },
+    "series": { "family": "IBM Plex Sans", "weight": 600 },
+    "number": { "family": "IBM Plex Mono", "weight": 400 }
+  }
+}

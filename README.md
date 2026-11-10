@@ -14,6 +14,7 @@ claude plugin marketplace add dbalakris/future-practice-tools
 
 ```bash
 claude plugin install prospector@future-practice-tools
+claude plugin install edition-cover@future-practice-tools
 ```
 
 ## Tools
@@ -21,6 +22,7 @@ claude plugin install prospector@future-practice-tools
 | Tool | What it does | Status |
 |---|---|---|
 | prospector | Finds companies whose recent events make them live prospects, from your own triggers, and routes results where you say | 0.0.1 placeholder; 1.0.0 in progress |
+| edition-cover | Makes the cover image for a newsletter edition or LinkedIn article from its number, title and subtitle, in your own colors, fonts and mark | 1.0.0 |
 
 ## Layout
 

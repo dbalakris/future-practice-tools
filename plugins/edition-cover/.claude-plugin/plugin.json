@@ -1,0 +1,11 @@
+{
+  "name": "edition-cover",
+  "version": "1.0.0",
+  "description": "Makes the cover image for a newsletter edition or LinkedIn article from its number, title and subtitle, in your project's own colors, fonts and mark.",
+  "author": {
+    "name": "Future Practice Studio"
+  },
+  "repository": "https://github.com/dbalakris/future-practice-tools",
+  "keywords": ["newsletter", "linkedin", "cover-image", "design"],
+  "license": "MIT"
+}
