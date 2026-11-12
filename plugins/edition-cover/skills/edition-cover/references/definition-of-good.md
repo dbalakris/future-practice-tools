@@ -8,9 +8,10 @@ The cover is the image at the top of each edition and the card in the newsletter
 
 ## Must hold (the script checks these)
 
-- Title on two lines at most, inside the sheet's margins.
+- Title on two lines at most, inside the right margin.
 - Subtitle on one line, two at most.
-- Nothing runs off the sheet.
+- The text block stays clear of the publisher line.
+- The newsletter's name fits on the tag.
 
 ## Should hold (check by eye)
 
@@ -21,7 +22,7 @@ The cover is the image at the top of each edition and the card in the newsletter
 
 ## Decided, don't relitigate
 
+- **The name tag is the cover (2026-11-12).** A "Hello, my name is" tag with the newsletter's name, tilted on the left; edition number, title, subtitle and author on the right; the publisher line at the bottom. It matches the edition 1 cover and the newsletter's logo. The 1.0.0 letterhead layout (paper sheet, series line, mark at top right) was wrong and is gone: the owner's call, "it should be the name tag one".
 - One weight for the whole title. Bold phrases were tried and dropped (Oct 2026); `title_bold` in the config can turn them back on.
-- The mark sits small at the top right of the sheet, on the series line. A large mark straddling the sheet's edge read as misplaced.
-- No photos, gradients or shadows. The second sheet behind gives the depth.
-- 1920 x 1080 PNG. LinkedIn crops the preview in the feed, so the title, not the mark, has to carry the image.
+- No photos, gradients or shadows.
+- 1920 x 1080 PNG. LinkedIn crops the preview in the feed, so the title, not the tag, has to carry the image.

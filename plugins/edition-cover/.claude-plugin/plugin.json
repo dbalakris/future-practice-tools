@@ -1,7 +1,7 @@
 {
   "name": "edition-cover",
-  "version": "1.0.0",
-  "description": "Makes the cover image for a newsletter edition or LinkedIn article from its number, title and subtitle, in your project's own colors, fonts and mark.",
+  "version": "2.0.0",
+  "description": "Makes the cover image for a newsletter edition or LinkedIn article from its number, title and subtitle, in your project's own colors, fonts and wording.",
   "author": {
     "name": "Future Practice Studio"
   },
