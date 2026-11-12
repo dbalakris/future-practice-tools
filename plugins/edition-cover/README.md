@@ -23,7 +23,7 @@ Ask Claude for "the cover for edition 03" or "a banner for this article", with t
 | `tag` | `greeting` ("Hello"), `subline` ("My name is"), `lead` ("The") and `name`, the newsletter's name; `/` in `name` marks its line break |
 | `author` | The byline under the subtitle; empty for none |
 | `footer` | The publisher line at the bottom; empty for none |
-| `colors` | `ground`, `tag`, `tag_band`, `tag_band_text`, `tag_text`, `title`, `subtitle`, `meta` (number, author, footer) |
+| `colors` | `ground`, `tag`, `tag_band`, `tag_band_text`, `tag_lead` ("The"), `tag_text`, `title`, `subtitle`, `author`, `accent` (edition number and publisher line) |
 | `fonts` | `title` (also the tag; `lead_weight` for "The"), `subtitle` (`style: italic` allowed), `meta`, `author`; each a `family` and `weight`, optional `files` ({weight: path}) for local font files |
 
 Upgrading from 1.0.0: `series`, `mark`, and the `sheet`, `sheet_edge`, `rule`, `series` and `number` colors are gone. Copy the new keys from `defaults/cover.config.json`.

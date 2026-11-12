@@ -29,8 +29,7 @@ DEFAULT_CONFIG = PLUGIN_ROOT / "defaults" / "cover.config.json"
 CONFIG_SEARCH = ["edition-cover.json", "docs/povs/edition-cover.json", ".edition-cover.json"]
 FONT_CACHE = Path(os.environ.get("EDITION_COVER_FONT_CACHE", Path.home() / ".cache" / "edition-cover" / "fonts"))
 W, H = 1920, 1080
-COL_LEFT, COL_RIGHT = 818, W - 120   # right column: number, title, subtitle, author
-FOOT_TOP = 990                         # publisher line
+PAD, GAP, TAG_W = 160, 96, 560        # side margins, badge-to-text gap, badge width
 
 
 def find_config(explicit):
@@ -148,30 +147,33 @@ def build_html(cfg, number, title, subtitle, font_css, use_google):
         r = f[role]
         return f'font-family:"{r["family"]}";font-weight:{r["weight"]};font-style:{r.get("style", "normal")}'
     num = html.escape(cfg.get("number_format", "Edition {n}").format(n=number))
-    author = f'<p class="by" id="by">{smart(cfg["author"])}</p>' if cfg.get("author") else ""
+    author = f'<div class="by" id="by">{smart(cfg["author"])}</div>' if cfg.get("author") else ""
     footer = f'<div class="foot">{smart(cfg["footer"])}</div>' if cfg.get("footer") else ""
+    tf = f["title"]
     return f"""<!doctype html><html><head><meta charset="utf-8">{google_link(font_roles(cfg)) if use_google else ""}<style>{font_css}
 *{{box-sizing:border-box}}body{{margin:0;width:{W}px;height:{H}px;overflow:hidden;position:relative;background:{c['ground']}}}
-.tag{{position:absolute;left:160px;top:342px;width:562px;height:392px;transform:rotate(-3.8deg);transform-origin:center;
-  background:{c['tag']};border-radius:18px;border-bottom:12px solid {c['tag_band']};overflow:hidden}}
-.band{{background:{c['tag_band']};height:108px;padding:20px 34px 0}}
-.hello{{font-family:"{f['title']['family']}";font-weight:{f['title']['weight']};font-size:52px;line-height:1;letter-spacing:.01em;text-transform:uppercase;color:{c['tag_band_text']}}}
-.mni{{{face('meta')};font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:{c['tag_band_text']};opacity:.75;margin-top:8px}}
-.lead{{font-family:"{f['title']['family']}";font-weight:{f['title'].get('lead_weight', 500)};font-size:27px;color:{c['tag_text']};margin:58px 0 0 34px}}
-.name{{font-family:"{f['title']['family']}";font-weight:{f['title']['weight']};font-size:62px;line-height:1.02;letter-spacing:-.01em;color:{c['tag_text']};margin:8px 0 0 30px}}
-.col{{position:absolute;left:{COL_LEFT}px;width:{COL_RIGHT - COL_LEFT}px;top:0;height:{FOOT_TOP - 40}px;display:flex;flex-direction:column;justify-content:center;padding-top:110px}}
-.no{{{face('meta')};font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:{c['meta']}}}
-h1{{{face('title')};font-size:82px;line-height:1.05;letter-spacing:-.01em;margin:30px 0 0;color:{c['title']}}}
-h1 b{{font-weight:{f['title'].get('bold_weight', 800)}}}
-.dek{{{face('subtitle')};font-size:28px;line-height:1.45;margin:30px 0 0;color:{c['subtitle']};max-width:910px}}
-.by{{{face('author')};font-size:18px;margin:34px 0 0;color:{c['meta']}}}
-.foot{{position:absolute;left:160px;top:{FOOT_TOP}px;{face('meta')};font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:{c['meta']}}}
-</style></head><body>
+.cover{{width:{W}px;height:{H}px;display:flex;align-items:center;gap:{GAP}px;padding:0 {PAD}px}}
+.tag{{width:{TAG_W}px;height:400px;flex-shrink:0;background:{c['tag']};border-radius:26px;transform:rotate(-4deg);display:flex;flex-direction:column;overflow:hidden}}
+.band{{background:{c['tag_band']};color:{c['tag_band_text']};padding:22px 34px 16px;display:flex;flex-direction:column;gap:2px}}
+.hello{{font-family:"{tf['family']}";font-weight:{tf['weight']};font-size:52px;line-height:1;letter-spacing:-.01em;text-transform:uppercase}}
+.mni{{{face('meta')};font-size:17px;letter-spacing:.14em;text-transform:uppercase}}
+.body{{flex-grow:1;display:flex;flex-direction:column;justify-content:center;padding:12px 34px 22px;gap:6px}}
+.lead{{font-family:"{tf['family']}";font-weight:{tf.get('lead_weight', 500)};font-size:34px;line-height:1.05;color:{c['tag_lead']}}}
+.name{{font-family:"{tf['family']}";font-weight:{tf['weight']};font-size:66px;line-height:.98;letter-spacing:-.02em;color:{c['tag_text']}}}
+.strip{{height:12px;background:{c['tag_band']}}}
+.col{{display:flex;flex-direction:column;gap:28px;min-width:0;flex:1}}
+.no{{{face('meta')};font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:{c['accent']}}}
+h1{{{face('title')};margin:0;font-size:84px;line-height:1.02;letter-spacing:-.015em;color:{c['title']}}}
+h1 b{{font-weight:{tf.get('bold_weight', 800)}}}
+.dek{{{face('subtitle')};margin:0;font-size:34px;line-height:1.3;color:{c['subtitle']};opacity:.85;text-wrap:balance}}
+.by{{{face('author')};font-size:22px;color:{c['author']};opacity:.7}}
+.foot{{position:absolute;left:{PAD}px;bottom:64px;{face('meta')};font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:{c['accent']}}}
+</style></head><body><div class="cover">
 <div class="tag" id="tag"><div class="band"><div class="hello">{smart(t['greeting'])}</div><div class="mni">{smart(t['subline'])}</div></div>
-<div class="lead">{smart(t['lead'])}</div><div class="name" id="name">{lines_html(t['name'])}</div></div>
+<div class="body"><div class="lead">{smart(t['lead'])}</div><div class="name" id="name">{lines_html(t['name'])}</div></div><div class="strip"></div></div>
 <div class="col" id="col"><div class="no">{num}</div>
 <h1 id="t">{lines_html(title, cfg.get('title_bold', False))}</h1>
-<p class="dek" id="d">{smart(subtitle)}</p>{author}</div>
+<p class="dek" id="d">{smart(subtitle)}</p>{author}</div></div>
 {footer}</body></html>"""
 
 
@@ -186,11 +188,12 @@ CHECK_JS = """() => {
   return {
     title_lines: Math.round(r(t).height / lh(t)),
     subtitle_lines: Math.round(r(d).height / lh(d)),
-    title_right: Math.round(widest), column_right: Math.round(r(col).right),
-    text_top: Math.round(r(col.firstElementChild).top), text_bottom: Math.round(r(last).bottom), footer_top: %d,
-    tag_name_fits: name.scrollWidth <= tag.clientWidth - 30 && r(name).bottom <= r(tag).bottom,
+    title_right: Math.round(widest), column_right: %d,
+    text_top: Math.round(r(col.firstElementChild).top), text_bottom: Math.round(r(last).bottom),
+    footer_top: Math.round(r(document.querySelector('.foot') || document.body).top) - 30,
+    tag_name_fits: name.scrollWidth <= name.clientWidth && tag.scrollHeight <= tag.clientHeight + 1,
   };
-}""" % (FOOT_TOP - 30)
+}""" % (W - PAD)
 
 
 def render(page, doc):

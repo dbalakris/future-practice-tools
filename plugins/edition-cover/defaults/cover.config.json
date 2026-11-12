@@ -14,16 +14,33 @@
     "ground": "#2f3a45",
     "tag": "#fbfaf6",
     "tag_band": "#d9705f",
-    "tag_band_text": "#ffffff",
+    "tag_band_text": "#fbfaf6",
+    "tag_lead": "#6a6f75",
     "tag_text": "#1c1f24",
     "title": "#fbfaf6",
-    "subtitle": "#dfe2e4",
-    "meta": "#a9b2ba"
+    "subtitle": "#fbfaf6",
+    "author": "#fbfaf6",
+    "accent": "#e8c872"
   },
   "fonts": {
-    "title": { "family": "Outfit", "weight": 700, "lead_weight": 500, "bold_weight": 800 },
-    "subtitle": { "family": "Literata", "weight": 400, "style": "italic" },
-    "meta": { "family": "IBM Plex Mono", "weight": 400 },
-    "author": { "family": "IBM Plex Sans", "weight": 400 }
+    "title": {
+      "family": "Outfit",
+      "weight": 700,
+      "lead_weight": 500,
+      "bold_weight": 800
+    },
+    "subtitle": {
+      "family": "Literata",
+      "weight": 400,
+      "style": "italic"
+    },
+    "meta": {
+      "family": "IBM Plex Mono",
+      "weight": 400
+    },
+    "author": {
+      "family": "IBM Plex Sans",
+      "weight": 400
+    }
   }
 }
